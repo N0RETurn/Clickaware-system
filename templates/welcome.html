@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ad Click Protection | ClickAware</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Security Headers -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+      :root {
+        --security-green: #28a745;
+        --warning-orange: #fd7e14;
+        --security-blue: #0d6efd;
+        --dark: #212529;
+        --bg-light: #f0f2f5;
+        --card-bg: #ffffff;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --border-radius: 12px;
+      }
+
+      body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #e9f0ff 0%, #f7fafc 100%);
+        min-height: 100vh;
+        margin: 0;
+        padding: 3rem 1rem;
+        color: var(--dark);
+        overflow-x: hidden;
+      }
+
+      /* Container */
+      .security-container {
+        max-width: 680px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 25px var(--shadow-color);
+        border-top: 6px solid var(--security-green);
+        padding: 2.5rem 3rem;
+        transition: box-shadow 0.3s ease;
+      }
+      .security-container:hover {
+        box-shadow: 0 20px 40px rgba(40, 167, 69, 0.3);
+      }
+
+      /* Header */
+      .security-header {
+        border-bottom: 1px solid #e3e9ff;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .security-badge {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 1.2rem auto;
+        border-radius: 50%;
+        background: rgba(40, 167, 69, 0.12);
+        border: 3px dashed var(--security-green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--security-green);
+        font-size: 2.8rem;
+        transition: transform 0.3s ease;
+        box-shadow: 0 0 15px rgba(40, 167, 69, 0.3);
+      }
+      .security-badge:hover {
+        transform: scale(1.15) rotate(10deg);
+        box-shadow: 0 0 25px rgba(40, 167, 69, 0.6);
+      }
+
+      h1.fw-bold {
+        font-weight: 700;
+        font-size: 2.5rem;
+        color: var(--security-green);
+        margin-bottom: 0.3rem;
+      }
+      p.text-muted {
+        font-size: 1.1rem;
+        letter-spacing: 0.02em;
+      }
+
+      /* Status Alert */
+      .alert-success {
+        border-left: 6px solid var(--security-green) !important;
+        background: #e6f4ea !important;
+        color: var(--security-green) !important;
+        box-shadow: 0 4px 12px rgba(40, 167, 69, 0.15);
+        border-radius: 12px;
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+      .alert-success i {
+        font-size: 2.5rem;
+      }
+      .alert-success h3 {
+        margin: 0;
+        font-weight: 600;
+      }
+      .alert-success p {
+        margin: 0;
+        font-weight: 500;
+      }
+      .alert-success small {
+        display: block;
+        margin-top: 4px;
+        color: #3a6e3a;
+      }
+
+      /* Threat Alert */
+      .threat-alert {
+        border-left: 6px solid var(--warning-orange);
+        background: #fff4e5;
+        padding: 1.8rem 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: 0 8px 15px rgba(253, 126, 20, 0.15);
+        margin-bottom: 2rem;
+      }
+      .threat-alert h3 {
+        font-weight: 700;
+        color: var(--warning-orange);
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+      }
+      .threat-alert p.fw-bold {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+      .risk-factor {
+        background: #fff7e6;
+        padding: 0.85rem 1rem;
+        border-radius: 8px;
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        font-weight: 600;
+        color: #b26000;
+        transition: all 0.3s ease;
+        cursor: default;
+        box-shadow: 0 2px 6px rgba(253, 126, 20, 0.1);
+      }
+      .risk-factor:hover {
+        background-color: #fff0cc;
+        transform: translateX(7px);
+        box-shadow: 0 6px 12px rgba(253, 126, 20, 0.25);
+      }
+      .risk-factor i {
+        font-size: 1.4rem;
+        min-width: 22px;
+      }
+
+      /* Safer Alternatives */
+      .bg-light {
+        background: var(--bg-light) !important;
+      }
+      .safer-alternatives {
+        background: var(--card-bg);
+        padding: 1.8rem 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: 0 8px 15px rgba(13, 110, 253, 0.12);
+        margin-bottom: 2rem;
+      }
+      .safer-alternatives h3 {
+        color: var(--security-blue);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.35rem;
+        margin-bottom: 1.2rem;
+      }
+      .safer-alternatives .icon {
+        color: var(--security-blue);
+      }
+      .safer-alternatives .option {
+        border: 1.5px solid var(--security-blue);
+        padding: 1rem 1.2rem;
+        border-radius: 10px;
+        font-weight: 600;
+        color: var(--security-blue);
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        cursor: pointer;
+        user-select: none;
+      }
+      .safer-alternatives .option:hover {
+        background-color: var(--security-blue);
+        color: white;
+        box-shadow: 0 6px 20px rgba(13, 110, 253, 0.35);
+      }
+
+      /* Buttons */
+      .btn-security {
+        font-weight: 600;
+        letter-spacing: 0.6px;
+        border-radius: 40px;
+        padding: 0.55rem 1.8rem;
+        font-size: 1.05rem;
+        transition: all 0.25s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+      }
+      .btn-security:hover {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        transform: translateY(-3px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, #28a745, #2ecc71);
+        border: none;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(45deg, #2ecc71, #28a745);
+      }
+
+      .btn-outline-secondary {
+        border-color: var(--security-blue);
+        color: var(--security-blue);
+      }
+      .btn-outline-secondary:hover {
+        background-color: var(--security-blue);
+        color: white;
+        border-color: var(--security-blue);
+      }
+
+      /* Footer Text */
+      .footer-text {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin-top: 3rem;
+        text-align: center;
+        user-select: none;
+      }
+      .footer-text .badge {
+        font-size: 1rem;
+        padding: 0.4em 0.9em;
+        vertical-align: middle;
+      }
+
+      /* Modal */
+      .ad-warning-modal .modal-header {
+        background: var(--warning-orange);
+        color: white;
+        border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
+      }
+      .ad-warning-modal .modal-body {
+        background: #fff7e6;
+      }
+      .ad-warning-modal .btn-danger {
+        background: var(--warning-orange);
+        border: none;
+        transition: background 0.3s ease;
+      }
+      .ad-warning-modal .btn-danger:hover {
+        background: #d86500;
+      }
+      
+      /* Responsive tweaks */
+      @media (max-width: 576px) {
+        .security-container {
+          padding: 2rem 1.5rem;
+        }
+        .security-badge {
+          width: 80px;
+          height: 80px;
+          font-size: 2rem;
+        }
+        h1.fw-bold {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="security-container">
+      <div class="security-header">
+        <div class="security-badge rounded-circle">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h1 class="fw-bold">ClickAware Protection</h1>
+        <p class="text-muted">Advanced ad click security monitoring</p>
+      </div>
+      
+      <div class="alert alert-success d-flex align-items-center mb-4" role="alert">
+        <i class="fas fa-check-circle fa-2x text-success me-3"></i>
+        <div>
+          <h3 class="h5 alert-heading mb-1">Current Status: Protected</h3>
+          <p class="mb-0">No malicious ad clicks detected in your recent activity</p>
+          <small class="text-success opacity-75">Last scan: {{ last_scan }} | IP: {{ user_ip }}</small>
+        </div>
+      </div>
+      
+      <div class="threat-alert">
+        <h3><i class="fas fa-exclamation-triangle me-2"></i>Important Security Recommendation</h3>
+        <p class="fw-bold mb-3">Avoid clicking on ads whenever possible:</p>
+        <ul class="list-unstyled mb-0">
+          <li class="risk-factor">
+            <i class="fas fa-bug me-2"></i>
+            <strong>Malvertising risk:</strong> Even legitimate ads can deliver malware
+          </li>
+          <li class="risk-factor">
+            <i class="fas fa-fish me-2"></i>
+            <strong>Phishing danger:</strong> Ads may mimic trusted brands
+          </li>
+          <li class="risk-factor">
+            <i class="fas fa-user-secret me-2"></i>
+            <strong>Tracking:</strong> Ad clicks expose your browsing patterns
+          </li>
+        </ul>
+      </div>
+      
+      <div class="safer-alternatives">
+        <h3><i class="fas fa-lightbulb me-2 icon"></i>Safer Alternatives</h3>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="option" tabindex="0" role="button" aria-pressed="false">
+              <i class="fas fa-search"></i>
+              Search directly through trusted search engines
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="option" tabindex="0" role="button" aria-pressed="false">
+              <i class="fas fa-bookmark"></i>
+              Bookmark official websites you frequently visit
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 pt-3">
+        <a href="{{ url_for('login') }}" class="btn btn-security btn-primary d-flex align-items-center justify-content-center gap-2 flex-grow-1">
+          <i class="fas fa-sign-in-alt"></i> Secure Login
+        </a>
+        <a href="{{ url_for('register') }}" class="btn btn-security btn-outline-secondary d-flex align-items-center justify-content-center gap-2 flex-grow-1">
+          <i class="fas fa-user-shield"></i> Create Protected Account
+        </a>
+      </div>
+      
+      <div class="footer-text">
+        <p class="mb-1">Protected by ClickAware Security Systems</p>
+        <p class="mb-0">
+          Threat Level:
+          <span class="badge bg-success">{{ threat_status.protection_level }}</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Ad Warning Modal -->
+    <div class="modal fade ad-warning-modal" id="adWarningModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              <i class="fas fa-radiation me-2"></i> Security Warning
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger d-flex align-items-center">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              <strong>Advertisement Link Detected</strong>
+            </div>
+            <p>You're attempting to visit an advertising network which may:</p>
+            <ul class="mb-3">
+              <li>Track your browsing activity</li>
+              <li>Redirect to malicious sites</li>
+              <li>Attempt to install unwanted software</li>
+            </ul>
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" type="checkbox" id="disableWarnings" />
+              <label class="form-check-label" for="disableWarnings">Disable warnings for 24 hours</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              <i class="fas fa-times me-2"></i> Cancel
+            </button>
+            <button type="button" class="btn btn-danger" id="proceedToAd">
+              <i class="fas fa-external-link-alt me-2"></i> Proceed Anyway
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Animate security badge rotation
+        const badge = document.querySelector('.security-badge');
+        setInterval(() => {
+          badge.style.transform = 'rotate(5deg)';
+          setTimeout(() => {
+            badge.style.transform = 'rotate(-5deg)';
+            setTimeout(() => {
+              badge.style.transform = 'rotate(0deg)';
+            }, 200);
+          }, 200);
+        }, 5000);
+
+        // Ad click interception
+        document.addEventListener('click', function (e) {
+          const link = e.target.closest('a');
+          if (link && isAdLink(link)) {
+            e.preventDefault();
+            showAdWarning(link.href);
+          }
+        }, true);
+
+        function isAdLink(link) {
+          const adDomains = [
+            'doubleclick.net', 'googlesyndication.com',
+            'adsrvr.org', 'adnxs.com', 'adsystem.com',
+            'adservice.google', '/ads/', '?ad=', '&ad=',
+            'click.ad', 'adclick.', 'adserver.'
+          ];
+          return adDomains.some(domain => link.href.includes(domain)) ||
+                 link.classList.contains('ad') ||
+                 link.closest('[class*="ad"], [id*="ad"]');
+        }
+
+        function showAdWarning(url) {
+          if (localStorage.getItem('adWarningsDisabled')) {
+            const disabledTime = parseInt(localStorage.getItem('adWarningsDisabled'));
+            if (Date.now() - disabledTime < 86400000) { // 24 hours
+              window.location.href = url;
+              return;
+            }
+          }
+          const modal = new bootstrap.Modal(document.getElementById('adWarningModal'));
+          const proceedBtn = document.getElementById('proceedToAd');
+          proceedBtn.onclick = function () {
+            if (document.getElementById('disableWarnings').checked) {
+              localStorage.setItem('adWarningsDisabled', Date.now());
+            }
+            window.location.href = url;
+          };
+          modal.show();
+        }
+      });
+    </script>
+  </body>
+</html>

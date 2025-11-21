@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en" data-bs-theme="{{ 'dark' if session.get('dark_mode', False) else 'light' }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="csrf-token" content="{{ csrf_token() if csrf_token else '' }}" />
+  <meta name="description" content="Cybersecurity training platform" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="permissions-policy" content="geolocation=(), microphone=(), camera=()" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net; img-src 'self' data:;">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+  <title>{% block title %}Cybersecurity Training{% endblock %}</title>
+
+  <!-- Preload -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+
+  <!-- CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bs-body-bg: #f8f9fa;
+      --bs-body-color: #212529;
+      --bs-dark-bg: #212529;
+      --security-green: #28a745;
+      --warning-orange: #fd7e14;
+      --security-blue: #17a2b8;
+    }
+
+    [data-bs-theme="dark"] {
+      --bs-body-bg: #121212;
+      --bs-body-color: #f8f9fa;
+      --bs-dark-bg: #1a1a1a;
+      --bs-dark-rgb: 33, 37, 41;
+      --security-green: #2ecc71;
+      --warning-orange: #e67e22;
+      --dropdown-link-hover-bg: #2d2d2d;
+    }
+
+    body {
+      padding-top: 3.5rem;
+      background-color: var(--bs-body-bg);
+      color: var(--bs-body-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .security-indicator {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-bs-theme="dark"] .navbar {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .theme-switcher-option {
+      padding: 0.25rem 1rem;
+    }
+
+    .theme-switcher-option:hover {
+      background-color: var(--dropdown-link-hover-bg);
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+    }
+
+    .tutorial-card.border-success { border-color: var(--security-green) !important; }
+    .tutorial-card.border-primary { border-color: #0d6efd !important; }
+    .tutorial-card.border-secondary { border-color: #6c757d !important; }
+
+    .badge-card {
+      background: var(--bs-body-bg);
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .badge-card:hover {
+      background: var(--bs-tertiary-bg);
+      transform: scale(1.05);
+    }
+
+    .progress-bar {
+      transition: width 1.5s ease-in-out;
+    }
+
+    /* Quiz Review Specific Styles */
+    .quiz-review-card {
+      border-left: 4px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .quiz-review-card.correct {
+      border-left-color: var(--security-green);
+      background-color: rgba(40, 167, 69, 0.05);
+    }
+    
+    .quiz-review-card.incorrect {
+      border-left-color: var(--warning-orange);
+      background-color: rgba(253, 126, 20, 0.05);
+    }
+    
+    [data-bs-theme="dark"] .quiz-review-card.correct {
+      background-color: rgba(46, 204, 113, 0.1);
+    }
+    
+    [data-bs-theme="dark"] .quiz-review-card.incorrect {
+      background-color: rgba(230, 126, 34, 0.1);
+    }
+    
+    .answer-comparison {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .answer-header {
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+    }
+    
+    .explanation-box {
+      border-radius: 8px;
+      border: 1px solid var(--bs-border-color);
+    }
+    
+    /* Quiz Question Styles */
+    .quiz-question {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .quiz-option {
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--bs-border-color);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .quiz-option:hover {
+      background-color: var(--bs-tertiary-bg);
+    }
+    
+    .quiz-option.correct {
+      background-color: rgba(40, 167, 69, 0.1);
+      border-color: var(--security-green);
+    }
+    
+    .quiz-option.incorrect {
+      background-color: rgba(220, 53, 69, 0.1);
+      border-color: var(--bs-danger);
+    }
+    
+    .quiz-option.selected {
+      font-weight: bold;
+    }
+
+    @media (max-width: 576px) {
+      .stat-card h5,
+      .stat-card h2 {
+        font-size: 1.1rem;
+      }
+      .stat-card .progress {
+        height: 15px !important;
+      }
+    }
+  </style>
+
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for('dashboard') }}">
+        <i class="fas fa-shield-alt me-2"></i>CyberTrain
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Training</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('resources') }}">Resources</a></li>
+          {% if current_user.is_authenticated and current_user.is_admin %}
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+          {% endif %}
+        </ul>
+
+        <ul class="navbar-nav ms-auto">
+          {% if current_user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+              <i class="fas fa-user-circle me-2"></i>
+              <span class="d-none d-md-inline">{{ current_user.username }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><h6 class="dropdown-header">Account</h6></li>
+              <li><a class="dropdown-item" href="{{ url_for('profile') }}"><i class="fas fa-user me-2"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('settings') }}"><i class="fas fa-cog me-2"></i>Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <div class="dropdown-item">
+                  <i class="fas fa-moon me-2"></i>Theme
+                  <div class="d-flex flex-column mt-2">
+                    <a href="#" class="theme-switcher-option" data-theme="system"><i class="fas fa-desktop me-2"></i>System</a>
+                    <a href="#" class="theme-switcher-option" data-theme="light"><i class="fas fa-sun me-2"></i>Light</a>
+                    <a href="#" class="theme-switcher-option" data-theme="dark"><i class="fas fa-moon me-2"></i>Dark</a>
+                  </div>
+                </div>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+            </ul>
+          </li>
+          <!-- Visible Logout on md+ -->
+          <li class="nav-item d-none d-md-block">
+            <a class="nav-link text-danger" href="{{ url_for('logout') }}">
+              <i class="fas fa-sign-out-alt me-1"></i> Logout
+            </a>
+          </li>
+          {% else %}
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Security Indicator -->
+  <div class="security-indicator">
+    <div class="card shadow-sm">
+      <div class="card-body p-2 d-flex align-items-center">
+        <i class="fas fa-shield-alt me-2 text-success"></i>
+        <div>
+          <small class="d-block">Secure Session</small>
+          <small class="text-muted d-block">
+            {% if current_user.is_authenticated %}
+              Active {{ current_user.last_activity|time_ago }}
+            {% else %}
+              Guest Mode
+            {% endif %}
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      initializeTheme();
+      setupThemeSwitchers();
+      initializeQuizReview();
+    });
+
+    function initializeTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'system';
+      setTheme(savedTheme);
+    }
+
+    function setTheme(theme) {
+      let finalTheme = theme === 'system'
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : theme;
+
+      document.documentElement.setAttribute('data-bs-theme', finalTheme);
+      localStorage.setItem('theme', theme);
+    }
+
+    function setupThemeSwitchers() {
+      document.querySelectorAll('.theme-switcher-option').forEach(el => {
+        el.addEventListener('click', e => {
+          e.preventDefault();
+          setTheme(el.dataset.theme);
+        });
+      });
+    }
+
+    function initializeQuizReview() {
+      // Initialize tooltips for explanations
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+
+      // Quiz review expand/collapse functionality
+      document.querySelectorAll('.explanation-toggle').forEach(button => {
+        button.addEventListener('click', function() {
+          const explanation = this.nextElementSibling;
+          explanation.classList.toggle('d-none');
+          const icon = this.querySelector('i');
+          icon.classList.toggle('fa-chevron-down');
+          icon.classList.toggle('fa-chevron-up');
+        });
+      });
+
+      // Highlight selected quiz options in review
+      document.querySelectorAll('.quiz-option.selected').forEach(option => {
+        option.classList.add('fw-bold');
+        if (option.classList.contains('incorrect')) {
+          option.classList.add('border-danger');
+        }
+      });
+    }
+  </script>
+
+  <noscript>
+    <div class="alert alert-danger text-center">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      JavaScript is required for proper functionality and security. Please enable it.
+    </div>
+  </noscript>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

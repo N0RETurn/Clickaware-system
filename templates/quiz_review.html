@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="card mb-4">
+    <div class="card-body text-center">
+      <h2>Quiz Review: {{ tutorial_title }}</h2>
+      <div class="display-4 {% if passed %}text-success{% else %}text-danger{% endif %}">
+        {{ score }} ({{ correct }}/{{ total }})
+      </div>
+      {% if passed %}
+        <div class="text-success mt-2">You passed this quiz!</div>
+      {% else %}
+        <div class="text-danger mt-2">You didn't pass this time. Review the material and try again.</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h4>Question Breakdown</h4>
+    </div>
+    <div class="card-body">
+      {% for result in results %}
+      <div class="mb-4 p-3 {% if result.is_correct %}bg-light{% else %}bg-danger-light{% endif %}">
+        <div class="d-flex justify-content-between mb-2">
+          <h5>Question {{ result.question_number }} ({{ result.type|title }})</h5>
+          <span class="badge {% if result.is_correct %}bg-success{% else %}bg-danger{% endif %}">
+            {% if result.is_correct %}Correct{% else %}Incorrect{% endif %}
+          </span>
+        </div>
+        
+        <p class="fw-bold">{{ result.question }}</p>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-3">
+              <div class="card-header bg-info text-white">
+                Your Answer
+              </div>
+              <div class="card-body">
+                {{ result.user_answer }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-3">
+              <div class="card-header bg-success text-white">
+                Correct Answer
+              </div>
+              <div class="card-body">
+                {{ result.correct_answer }}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {% if result.explanation %}
+        <div class="alert alert-info mt-2">
+          <strong>Explanation:</strong> {{ result.explanation }}
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="mt-4 card">
+    <div class="card-header">
+      <h4>Recommended Resources</h4>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        {% for resource in resources %}
+        <li class="list-group-item">
+          <a href="{{ SAFETY_RESOURCES[resource]['url'] }}" target="_blank">
+            {{ resource }} - {{ SAFETY_RESOURCES[resource]['category']|title }}
+          </a>
+          <ul>
+            {% for point in SAFETY_RESOURCES[resource]['key_points'] %}
+            <li>{{ point }}</li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-4 text-center">
+    <a href="{{ url_for('tutorial_view', tutorial_num=tutorial_num) }}" class="btn btn-primary">
+      Review Tutorial Again
+    </a>
+    {% if passed and tutorial_num < 10 %}
+      <a href="{{ url_for('tutorial_view', tutorial_num=tutorial_num+1) }}" class="btn btn-success">
+        Next Tutorial
+      </a>
+    {% elif not passed %}
+      <a href="{{ url_for('quiz', tutorial_num=tutorial_num) }}" class="btn btn-warning">
+        Retry Quiz
+      </a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

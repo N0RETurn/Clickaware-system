@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-4">📊 Admin Analytics Dashboard</h2>
+
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h4>Total Users</h4>
+          <p class="fs-3">{{ metrics.user_count }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h4>Quizzes Taken</h4>
+          <p class="fs-3">{{ metrics.total_quizzes }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h4>Passed Quizzes</h4>
+          <p class="fs-3">{{ metrics.passed_quizzes }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h4>Average Quiz Score</h4>
+          <p class="fs-3">{{ "%.1f"|format(metrics.avg_score * 100) }}%</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h4>Active Users (30 days)</h4>
+          <p class="fs-3">{{ metrics.active_users }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h4>Tutorial Completion Stats</h4>
+      <ul class="list-group">
+        {% for num, count in completions.items() %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Tutorial {{ num }}
+          <span class="badge bg-primary rounded-pill">{{ count }} users</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'admin/base.html' %}
+
+{% block page_body %}
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+  #slideshow {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: background-image 1s ease-in-out;
+    background-color: #121212; /* Fallback color */
+  }
+
+  .overlay-content {
+    position: relative;
+    z-index: 10;
+    color: white;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    border-radius: 0.5rem;
+  }
+  
+  .list-group-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+  
+  .list-group-item a {
+    color: #6ea8fe;
+    text-decoration: none;
+  }
+</style>
+
+<div id="slideshow"></div>
+
+<div class="overlay-content container mt-4">
+  <h1 class="mb-4">Welcome to the Cyber Admin Dashboard</h1>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card text-bg-primary h-100 shadow">
+        <div class="card-body">
+          <h5 class="card-title">Users</h5>
+          <p class="card-text display-6">{{ user_count }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-bg-success h-100 shadow">
+        <div class="card-body">
+          <h5 class="card-title">Detections</h5>
+          <p class="card-text display-6">{{ detection_count }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-bg-warning h-100 shadow">
+        <div class="card-body">
+          <h5 class="card-title">Quiz Results</h5>
+          <p class="card-text display-6">{{ QuizResult.query.count() }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3>Quick Links</h3>
+    <ul class="list-group">
+      <li class="list-group-item"><a href="{{ url_for('user.index_view') }}">Manage Users</a></li>
+      <li class="list-group-item"><a href="{{ url_for('detection.index_view') }}">View Detections</a></li>
+      <li class="list-group-item"><a href="{{ url_for('quizresult.index_view') }}">Quiz Results</a></li>
+      <li class="list-group-item"><a href="{{ url_for('userprogress.index_view') }}">User Progress</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const images = {{ images|tojson|safe }};
+    const slideshow = document.getElementById('slideshow');
+    let idx = 0;
+    
+    function changeBackground() {
+        if(images.length === 0) {
+            slideshow.style.backgroundColor = '#121212';
+            return;
+        }
+        
+        const imgPath = "{{ url_for('static', filename='') }}" + images[idx];
+        slideshow.style.backgroundImage = `url('${imgPath}')`;
+        
+        // Preload next image
+        const nextIdx = (idx + 1) % images.length;
+        if (images.length > 1) {
+            const nextImg = new Image();
+            nextImg.src = "{{ url_for('static', filename='') }}" + images[nextIdx];
+        }
+        
+        idx = nextIdx;
+    }
+    
+    // Initial load
+    changeBackground();
+    
+    // Change every 30 seconds if there are multiple images
+    if (images.length > 1) {
+        setInterval(changeBackground, 30000);
+    }
+});
+</script>
+{% endblock %}

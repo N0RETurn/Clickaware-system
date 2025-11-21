@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="card shadow">
+        <div class="card-header bg-{% if passed %}success{% else %}danger{% endif %} text-white">
+            <h2 class="mb-0">Quiz Results: {{ tutorial_title }}</h2>
+        </div>
+        
+        <div class="card-body">
+            <h3 class="text-center mb-4">
+                Your Score: <span class="text-{% if passed %}success{% else %}danger{% endif %}">{{ score }}</span>
+                ({{ correct }} out of {{ total }} correct)
+            </h3>
+            
+            <div class="alert alert-{% if passed %}success{% else %}warning{% endif %}">
+                {% if passed %}
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    Congratulations! You passed this quiz.
+                {% else %}
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    You didn't pass this time. Review the material and try again.
+                {% endif %}
+            </div>
+            
+            <h4 class="mt-4 mb-3">Question Details:</h4>
+            
+            {% for detail in answer_details %}
+            <div class="card mb-3 {% if detail.is_correct %}border-success{% else %}border-danger{% endif %}">
+                <div class="card-body">
+                    <h5 class="card-title">Question {{ loop.index }}</h5>
+                    <p class="card-text">{{ detail.question }}</p>
+                    
+                    <div class="mb-2">
+                        <strong>Your answer:</strong>
+                        <span class="{% if detail.is_correct %}text-success{% else %}text-danger{% endif %}">
+                            {{ detail.user_answer }}
+                        </span>
+                    </div>
+                    
+                    {% if not detail.is_correct %}
+                    <div class="alert alert-light">
+                        <strong>Correct answer:</strong> {{ detail.correct_answer }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                {% if passed %}
+                    {% if tutorial_num < 10 %}
+                        <a href="{{ url_for('tutorial_view', tutorial_num=tutorial_num+1) }}" 
+                           class="btn btn-primary me-md-2">
+                            Next Tutorial
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('complete_training') }}" 
+                           class="btn btn-success me-md-2">
+                            Complete Training
+                        </a>
+                    {% endif %}
+                {% endif %}
+                
+                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+                    Back to Dashboard
+                </a>
+                
+                {% if not passed %}
+                    <a href="{{ url_for('quiz', tutorial_num=tutorial_num) }}" 
+                       class="btn btn-warning">
+                        Try Again
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

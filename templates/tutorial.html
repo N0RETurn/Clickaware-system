@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+    <h2 class="mb-4">Tutorial {{ tutorial_num }}: {{ tutorial.title }}</h2>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Reading Summary</h5>
+            <p class="card-text">{{ reading_text }}</p>
+            {% if reading_url %}
+            <a href="{{ reading_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-info">
+                Read Full Article 🔗
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <form action="{{ url_for('quiz') }}" method="GET">
+        <input type="hidden" name="tutorial_num" value="{{ tutorial_num }}">
+        <button type="submit" class="btn btn-primary">Proceed to Quiz ➡️</button>
+    </form>
+</div>
+{% endblock %}

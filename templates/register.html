@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Register</h2>
+
+          <!-- Flash Messages -->
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          <!-- CSRF or Form Errors -->
+          {% if errors %}
+            {% for field, error_msg in errors.items() %}
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ error_msg }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <form method="POST" action="{{ url_for('register') }}" novalidate>
+            <!-- ✅ CSRF Token -->
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <!-- Username -->
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text"
+                     class="form-control {% if errors and errors.username %}is-invalid{% endif %}"
+                     id="username" name="username"
+                     value="{{ request.form.username or '' }}" required>
+              {% if errors and errors.username %}
+                <div class="invalid-feedback">{{ errors.username }}</div>
+              {% endif %}
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email"
+                     class="form-control {% if errors and errors.email %}is-invalid{% endif %}"
+                     id="email" name="email"
+                     value="{{ request.form.email or '' }}" required>
+              {% if errors and errors.email %}
+                <div class="invalid-feedback">{{ errors.email }}</div>
+              {% endif %}
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password"
+                     class="form-control {% if errors and errors.password %}is-invalid{% endif %}"
+                     id="password" name="password" required>
+              {% if errors and errors.password %}
+                <div class="invalid-feedback">{{ errors.password }}</div>
+              {% endif %}
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-3">
+              <label for="confirm_password" class="form-label">Confirm Password</label>
+              <input type="password"
+                     class="form-control {% if errors and errors.confirm_password %}is-invalid{% endif %}"
+                     id="confirm_password" name="confirm_password" required>
+              {% if errors and errors.confirm_password %}
+                <div class="invalid-feedback">{{ errors.confirm_password }}</div>
+              {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Register</button>
+          </form>
+
+          <div class="mt-3 text-center">
+            Already have an account?
+            <a href="{{ url_for('login') }}" class="text-decoration-none">Login here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

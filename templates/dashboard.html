@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <!-- Welcome Header -->
+    <div class="welcome-header mb-4 text-center">
+        <h2>Welcome back, <span class="text-primary">{{ current_user.username }}</span>! 👋</h2>
+        <p class="lead text-muted">Your cybersecurity learning journey continues...</p>
+
+        <!-- Logout Button -->
+        <div class="text-end mt-3">
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm">
+                <i class="fas fa-sign-out-alt me-1"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+        <!-- Safety Mastery -->
+        <div class="col-md-4 mb-3">
+            <div class="card stat-card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-shield-alt fa-3x text-info mb-3"></i>
+                    <h5>Safety Mastery</h5>
+                    <div class="progress mb-2" style="height: 20px">
+                        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" 
+                             role="progressbar" 
+                             style="width: {{ safety_mastery }}%"
+                             aria-valuenow="{{ safety_mastery }}" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100">
+                            {{ safety_mastery }}%
+                        </div>
+                    </div>
+                    <small class="text-muted">Your overall security knowledge</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Streak -->
+        <div class="col-md-4 mb-3">
+            <div class="card stat-card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-fire fa-3x text-danger mb-3"></i>
+                    <h5>Learning Streak</h5>
+                    <h2 class="display-4 text-danger">{{ streak }}</h2>
+                    <small class="text-muted">
+                        {% if streak == 0 %}
+                            Start your streak today!
+                        {% elif streak < 3 %}
+                            Keep it going!
+                        {% elif streak < 7 %}
+                            Great momentum!
+                        {% else %}
+                            Amazing dedication! 🔥
+                        {% endif %}
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Progress -->
+        <div class="col-md-4 mb-3">
+            <div class="card stat-card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-trophy fa-3x text-warning mb-3"></i>
+                    <h5>Course Progress</h5>
+                    <h2 class="display-4 text-warning">{{ "%.0f"|format(percentage) }}%</h2>
+                    <div class="progress mb-2" style="height: 10px">
+                        <div class="progress-bar bg-warning" 
+                             role="progressbar" 
+                             style="width: {{ percentage }}%"
+                             aria-valuenow="{{ percentage }}" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100"></div>
+                    </div>
+                    <small class="text-muted">{{ progress.values() | select('equalto', True) | list | length }} out of 20 tutorials completed</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tutorials Progress -->
+    <div class="card shadow mb-4">
+        <div class="card-header bg-primary text-white">
+            <h4><i class="fas fa-book-open me-2"></i> Your Learning Path</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% for tutorial_num in range(1, 21) %}
+                  {% if tutorials|length >= tutorial_num %}
+                    {% set tutorial = tutorials[tutorial_num - 1] %}
+                    <div class="col-md-6 col-lg-4 mb-3">
+                      <div class="card h-100 tutorial-card
+                        {% if progress.get(tutorial.id) %}
+                          border-success border-2
+                        {% elif (tutorial_num == 1) or progress.get(tutorials[tutorial_num - 2].id) %}
+                          border-primary border-2
+                        {% else %}
+                          border-secondary border-2
+                        {% endif %}">
+
+                        <div class="card-body d-flex flex-column">
+                          <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">
+                              <span class="badge bg-dark me-2">{{ tutorial_num }}</span>
+                              {{ tutorial.title }}
+                            </h5>
+                            {% if progress.get(tutorial.id) %}
+                              <span class="badge bg-success rounded-pill"><i class="fas fa-check"></i> Completed</span>
+                            {% elif (tutorial_num == 1) or progress.get(tutorials[tutorial_num - 2].id) %}
+                              <span class="badge bg-primary rounded-pill"><i class="fas fa-lock-open"></i> Available</span>
+                            {% else %}
+                              <span class="badge bg-secondary rounded-pill"><i class="fas fa-lock"></i> Locked</span>
+                            {% endif %}
+                          </div>
+                          <p class="card-text small text-muted mb-3">
+                            {{ READING_SUMMARY.get(tutorial_num, "Learn essential security concepts") }}
+                          </p>
+                          <div class="mt-auto d-flex justify-content-between">
+                            <a href="{{ url_for('tutorial_view', tutorial_num=tutorial_num) }}"
+                               class="btn btn-sm
+                                 {% if progress.get(tutorial.id) %}
+                                   btn-outline-success
+                                 {% elif (tutorial_num == 1) or progress.get(tutorials[tutorial_num - 2].id) %}
+                                   btn-primary
+                                 {% else %}
+                                   btn-secondary disabled
+                                 {% endif %}">
+                              {% if progress.get(tutorial.id) %}
+                                <i class="fas fa-redo me-1"></i> Review
+                              {% elif (tutorial_num == 1) or progress.get(tutorials[tutorial_num - 2].id) %}
+                                <i class="fas fa-play me-1"></i> Start
+                              {% else %}
+                                <i class="fas fa-lock me-1"></i> Locked
+                              {% endif %}
+                            </a>
+                            <a href="{{ url_for('quiz', tutorial_num=tutorial_num) }}"
+                               class="btn btn-sm
+                                 {% if progress.get(tutorial.id) %}
+                                   btn-success
+                                 {% elif (tutorial_num == 1) or progress.get(tutorials[tutorial_num - 2].id) %}
+                                   btn-outline-primary
+                                 {% else %}
+                                   btn-outline-secondary disabled
+                                 {% endif %}"
+                               {% if not ((tutorial_num == 1) or progress.get(tutorials[tutorial_num - 2].id)) %} disabled="disabled" {% endif %}>
+                              <i class="fas fa-question-circle me-1"></i>
+                              {% if progress.get(tutorial.id) %}
+                                Retake Quiz
+                              {% else %}
+                                Quiz
+                              {% endif %}
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% else %}
+                    <div class="col-md-6 col-lg-4 mb-3">
+                      <div class="card h-100 border-secondary text-center">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                          <i class="fas fa-exclamation-triangle fa-2x text-muted mb-3"></i>
+                          <p class="text-muted">Tutorial {{ tutorial_num }} unavailable</p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Badges -->
+    <div class="card shadow mb-4">
+        <div class="card-header bg-info text-white">
+            <h4><i class="fas fa-award me-2"></i> Your Achievements</h4>
+        </div>
+        <div class="card-body">
+            {% if badges %}
+                <div class="row">
+                    {% for badge in badges %}
+                    <div class="col-6 col-md-3 mb-4">
+                        <div class="card h-100 badge-card border-0 shadow-sm text-center">
+                            <div class="card-body">
+                                <i class="fas fa-medal fa-3x text-warning mb-3"></i>
+                                <h6 class="card-title text-primary">{{ badge }}</h6>
+                                <p class="small text-muted">
+                                    {% if badge == "Complete Training" %}
+                                        Completed all tutorials!
+                                    {% elif badge == "Fast Learner" %}
+                                        Completed 5 tutorials in a week
+                                    {% elif badge == "Quiz Master" %}
+                                        Scored 100% on a quiz
+                                    {% else %}
+                                        Achievement unlocked
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state text-center py-5 text-muted">
+                    <i class="fas fa-trophy fa-4x mb-3"></i>
+                    <h5>No badges yet</h5>
+                    <p>Complete tutorials and quizzes to earn badges!</p>
+                    <a href="{{ url_for('tutorial_view', tutorial_num=1) }}" class="btn btn-primary">Start Learning</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Motivational Quote -->
+    <div class="card shadow mb-4 bg-light">
+        <div class="card-body text-center py-3">
+            <blockquote class="blockquote mb-0">
+                <p class="mb-2"><i class="fas fa-quote-left text-muted me-2"></i>
+                    {% set quotes = [
+                        "Security is not a product, but a process.",
+                        "The only truly secure system is one that is powered off.",
+                        "Privacy is not something that I'm merely entitled to, it's an absolute prerequisite.",
+                        "Security is always excessive until it's not enough.",
+                        "The more secure you are, the less free you are."
+                    ] %}
+                    {{ quotes|random }}
+                </p>
+                <footer class="blockquote-footer mt-0">Cybersecurity Proverb</footer>
+            </blockquote>
+        </div>
+    </div>
+
+    <!-- Admin Tools -->
+    {% if current_user.is_authenticated and current_user.is_admin %}
+    <div class="card shadow">
+        <div class="card-header bg-danger text-white">
+            <h4><i class="fas fa-user-shield me-2"></i> Admin Tools</h4>
+        </div>
+        <div class="card-body d-flex flex-wrap gap-2">
+            <a href="{{ url_for('admin.index') }}" class="btn btn-danger">
+                <i class="fas fa-cogs me-2"></i> Admin Dashboard
+            </a>
+            <a href="{{ url_for('admin_analytics') }}" class="btn btn-outline-danger">
+                <i class="fas fa-chart-bar me-2"></i> View Analytics
+            </a>
+            <a href="#" class="btn btn-outline-secondary">
+                <i class="fas fa-users me-2"></i> Manage Users
+            </a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-5px)';
+            card.style.transition = 'all 0.3s ease';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+
+    const progressBars = document.querySelectorAll('.progress-bar');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.width = entry.target.getAttribute('aria-valuenow') + '%';
+            }
+        });
+    }, {threshold: 0.5});
+
+    progressBars.forEach(bar => {
+        observer.observe(bar);
+        bar.style.width = '0%';
+    });
+});
+</script>
+{% endblock %}

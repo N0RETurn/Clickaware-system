@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="card shadow mb-4">
+        <div class="card-header bg-primary text-white">
+            <h4><i class="fas fa-book me-2"></i> Security Resources</h4>
+        </div>
+        <div class="card-body">
+            {% for category, resources in resources.items() %}
+            <div class="mb-5">
+                <h5 class="mb-3 text-capitalize">
+                    <i class="fas fa-folder-open me-2"></i>{{ category.replace('_', ' ') }}
+                </h5>
+                <div class="row">
+                    {% for resource in resources %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="card-title">
+                                    <a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer">
+                                        {{ resource.name }}
+                                    </a>
+                                </h6>
+                                <ul class="small text-muted">
+                                    {% for point in resource.key_points %}
+                                    <li>{{ point }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer" 
+                                   class="btn btn-sm btn-outline-primary">
+                                    Visit Resource
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

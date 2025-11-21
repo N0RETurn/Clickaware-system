@@ -1,0 +1,982 @@
+2025-11-21 16:06:17,064 INFO app Database tables created successfully
+2025-11-21 16:06:17,162 INFO app Tutorial entries created
+2025-11-21 16:06:18,119 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.0.104:8080
+2025-11-21 16:06:18,121 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-11-21 16:06:18,130 INFO werkzeug  * Restarting with stat
+2025-11-21 16:06:31,213 INFO app Database tables created successfully
+2025-11-21 16:06:31,324 WARNING werkzeug  * Debugger is active!
+2025-11-21 16:06:31,338 INFO werkzeug  * Debugger PIN: 150-288-208
+2025-11-21 16:06:49,022 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:06:49] "GET / HTTP/1.1" 200 -
+2025-11-21 16:06:50,894 ERROR app Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1042, in favicon
+    return send_from_directory(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\helpers.py", line 557, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\utils.py", line 574, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-11-21 16:06:50,906 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:06:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-21 16:06:55,633 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:06:55] "GET /login HTTP/1.1" 200 -
+2025-11-21 16:06:56,175 ERROR app Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 502, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\scaffold.py", line 318, in send_static_file
+    return send_from_directory(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\helpers.py", line 557, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\utils.py", line 574, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-11-21 16:06:56,255 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:06:56] "[33mGET /static/favicon.ico HTTP/1.1[0m" 404 -
+2025-11-21 16:07:08,996 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:08] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-11-21 16:07:09,468 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:09,564 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:09] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:09,602 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:09] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:09,688 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:09,710 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:09] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:09,753 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:09] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:09,852 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:09,885 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:09] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:10,246 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:10] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:10,328 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:10,376 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:10] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:10,419 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:10] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:10,524 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:10,557 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:10] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:10,615 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:10] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:10,697 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:10,745 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:10] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:10,818 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:10] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:10,879 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:10,932 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:10] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:11,009 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:11] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:11,079 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:11,116 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:11] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:11,165 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:11] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:11,244 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:11,278 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:11] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:11,326 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:11] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:11,412 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:11,454 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:11] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:12,722 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:12,810 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:12] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:12,866 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:12] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:12,935 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:12,984 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:12] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:13,031 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:13] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:13,345 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:13,392 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:13] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:13,441 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:13] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:13,516 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:13,547 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:13] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:13,583 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:13] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:13,660 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:13,714 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:13] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:13,747 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:13] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:13,812 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:13,848 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:13] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:13,887 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:13] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:13,949 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:13,979 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:13] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:14,021 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:14] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:14,084 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:14,110 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:14] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:14,145 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:14] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:14,221 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:14,243 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:14] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:14,286 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:14] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:14,360 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:14,386 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:14] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:14,430 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:14] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:19,528 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:19] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:19,689 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:19,749 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:19] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:19,833 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:19] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:19,902 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:19,927 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:19] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:19,964 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:19] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:20,027 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:20,071 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:20] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:20,112 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:20] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:20,182 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:20,209 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:20] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:20,250 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:20] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:20,298 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:20,330 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:20] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:20,371 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:20] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:20,440 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:20,462 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:20] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:20,589 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:20] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:20,710 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:20,728 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:20] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:20,822 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:20] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:20,965 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:21,051 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:21] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:21,121 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:21] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:21,221 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:21,247 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:21] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-11-21 16:07:21,278 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:21] "[32mGET / HTTP/1.1[0m" 302 -
+2025-11-21 16:07:21,343 ERROR app Unexpected error in dashboard: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+Traceback (most recent call last):
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\app.py", line 1289, in dashboard
+    return render_template('dashboard.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\WICK\Desktop\Clickaware-extension1\templates\base.html", line 210, in top-level template code
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}">Admin</a></li>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WICK\AppData\Roaming\Python\Python311\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin_home'. Did you mean 'admin.index' instead?
+2025-11-21 16:07:21,369 INFO werkzeug 192.168.0.104 - - [21/Nov/2025 16:07:21] "[32mGET /dashboard HTTP/1.1[0m" 302 -
